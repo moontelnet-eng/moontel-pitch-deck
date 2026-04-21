@@ -39,19 +39,107 @@
       font-size: 1.15rem;
       line-height: 1.45;
     }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1.6rem;
+    }
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 13px;
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 8px;
+      color: #dce9f7;
+      background: rgba(255,255,255,0.04);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
   <main aria-live="polite">
     <p class="kicker">Moontel</p>
     <h1>Internet gratuito in tutto il mondo.</h1>
-    <p>Caricamento del pitch deck...</p>
+    <p>Moontel ti offre dati mobili su eSIM in oltre 100 paesi, sbloccabili con semplici azioni come brevi sondaggi.</p>
+    <div class="contact-links" aria-label="Link Moontel">
+      <a href="https://moontel.net/" target="_blank" rel="noreferrer">moontel.net</a>
+      <a href="mailto:Contacts@moontel.net">Contacts@moontel.net</a>
+    </div>
   </main>
   <script>
-    const replacements = [
-      ["La nuova idea di connettività mobile.", "Internet gratuito in tutto il mondo."],
-      ["Dati mobili su eSIM. Gratuiti alla base. Espandibili quando l'utente sceglie di attivarli.", "Moontel ti offre dati mobili su eSIM in oltre 100 paesi, sbloccabili con semplici azioni come brevi sondaggi."]
-    ];
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    const heroHeadline = "Internet gratuito in tutto il mondo.";
+    const heroCopy = "Moontel ti offre dati mobili su eSIM in oltre 100 paesi, sbloccabili con semplici azioni come brevi sondaggi.";
+    const contactStyles = `
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 2rem;
+    }
+
+    .contact-links.centered {
+      justify-content: center;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: #dce9f7;
+      background: rgba(255,255,255,0.035);
+      text-decoration: none;
+      font-size: 0.92rem;
+      line-height: 1;
+      transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .contact-links a:hover {
+      border-color: rgba(46, 231, 255, 0.42);
+      background: rgba(46, 231, 255, 0.08);
+      color: var(--text);
+    }
+
+      .contact-links {
+        gap: 8px;
+        margin-top: 1.35rem;
+      }
+
+      .contact-links a {
+        min-height: 38px;
+        padding: 0 12px;
+        font-size: 0.82rem;
+      }
+`;
+    const contactBlock = `
+            <div class="contact-links" aria-label="Link Moontel">
+              <a href="https://moontel.net/" target="_blank" rel="noreferrer">moontel.net</a>
+              <a href="mailto:Contacts@moontel.net">Contacts@moontel.net</a>
+            </div>`;
+    const closingContactBlock = `
+          <div class="contact-links centered" aria-label="Link Moontel">
+            <a href="https://moontel.net/" target="_blank" rel="noreferrer">moontel.net</a>
+            <a href="mailto:Contacts@moontel.net">Contacts@moontel.net</a>
+          </div>`;
+    const analyticsBlock = `
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  <\/script>
+  <script defer src="/_vercel/insights/script.js"><\/script>`;
 
     fetch("./moontel_pitch_deck_it.html", { cache: "no-store" })
       .then((response) => {
@@ -59,9 +147,28 @@
         return response.text();
       })
       .then((html) => {
-        for (const [from, to] of replacements) {
-          html = html.split(from).join(to);
+        html = html.replace(/\s*<div class="source-note">[\s\S]*?<\/div>\s*/, "\n");
+        if (!html.includes(".contact-links")) {
+          html = html.replace("</style>", `${contactStyles}\n  </style>`);
         }
+        html = html.split("La nuova idea di connettività mobile.").join(heroHeadline);
+        html = html.split("Dati mobili su eSIM. Gratuiti alla base. Espandibili quando l'utente sceglie di attivarli.").join(heroCopy);
+        html = html.split("La nuova idea di connettivitÃ  mobile.").join(heroHeadline);
+        html = html.split("Dati mobili su eSIM. Gratuiti alla base. Espandibili quando l'utente sceglie di attivarli.").join(heroCopy);
+
+        const heroLead = `<p class="lead">${heroCopy}</p>`;
+        if (!html.includes("mailto:Contacts@moontel.net")) {
+          html = html.replace(heroLead, `${heroLead}${contactBlock}`);
+          const closingMarker = "        </div>\n      </section>\n    </main>";
+          const closingIndex = html.lastIndexOf(closingMarker);
+          if (closingIndex !== -1) {
+            html = html.slice(0, closingIndex) + closingContactBlock + "\n" + html.slice(closingIndex);
+          }
+        }
+        if (!html.includes("/_vercel/insights/script.js")) {
+          html = html.replace("</body>", `${analyticsBlock}\n</body>`);
+        }
+
         document.open();
         document.write(html);
         document.close();
@@ -69,8 +176,12 @@
       .catch(() => {
         document.querySelector("main").innerHTML = `
           <p class="kicker">Moontel</p>
-          <h1>Internet gratuito in tutto il mondo.</h1>
-          <p>Moontel ti offre dati mobili su eSIM in oltre 100 paesi, sbloccabili con semplici azioni come brevi sondaggi.</p>
+          <h1>${heroHeadline}</h1>
+          <p>${heroCopy}</p>
+          <div class="contact-links" aria-label="Link Moontel">
+            <a href="https://moontel.net/" target="_blank" rel="noreferrer">moontel.net</a>
+            <a href="mailto:Contacts@moontel.net">Contacts@moontel.net</a>
+          </div>
         `;
       });
   </script>
