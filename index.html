@@ -12,6 +12,7 @@
   <meta property="og:url" content="https://www.moontel.info/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#03050b">
+  <link rel="icon" type="image/png" href="favicon.png">
   <style>
     :root {
       color-scheme: dark;
@@ -98,24 +99,24 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
       min-width: 0;
-      font-size: 1.22rem;
-      font-weight: 720;
-      line-height: 1;
+      line-height: 0;
     }
 
-    .brand::before {
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.95), rgba(145, 204, 255, 0.58) 24%, rgba(7, 17, 27, 0) 25%),
-        radial-gradient(circle at 40% 34%, #162c57, #050813 72%);
-      box-shadow: 0 0 34px rgba(84, 216, 255, 0.18);
-      content: "";
-      flex: 0 0 auto;
+    .brand-logo-frame {
+      display: block;
+      width: min(228px, 54vw);
+      aspect-ratio: 4.2 / 1;
+      overflow: hidden;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      mix-blend-mode: screen;
     }
 
     .top-actions {
@@ -928,7 +929,11 @@
 </head>
 <body>
   <header class="shell topbar">
-    <a class="brand" href="https://moontel.net/" aria-label="Moontel live product">Moontel</a>
+    <a class="brand" href="https://moontel.net/" aria-label="Moontel live product">
+      <span class="brand-logo-frame">
+        <img class="brand-logo" src="assets/moontel-wordmark.png" alt="Moontel" width="1536" height="1024">
+      </span>
+    </a>
     <div class="top-actions">
       <nav class="route-nav" aria-label="Moontel product links">
         <a href="https://moontel.net/" data-i18n="navProduct">Prodotto live</a>
