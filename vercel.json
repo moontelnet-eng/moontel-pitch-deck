@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/public/drop",
+      "destination": "https://moontel.net/api/public/drop"
+    }
+  ]
+}
