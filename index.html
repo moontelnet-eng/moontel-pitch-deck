@@ -127,20 +127,14 @@
       min-width: 0;
     }
 
-    .route-nav {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    .live-product-link {
       color: var(--muted);
       font-size: 0.93rem;
       white-space: nowrap;
-    }
-
-    .route-nav a {
       transition: color 180ms ease;
     }
 
-    .route-nav a:hover {
+    .live-product-link:hover {
       color: var(--text);
     }
 
@@ -221,6 +215,7 @@
       line-height: 0.98;
       overflow-wrap: break-word;
       text-wrap: balance;
+      white-space: pre-line;
     }
 
     .lede {
@@ -280,84 +275,38 @@
       backdrop-filter: blur(16px);
     }
 
-    .button.tertiary {
-      border-color: transparent;
-      background: transparent;
-      color: var(--muted);
-      padding-right: 4px;
-      padding-left: 4px;
-    }
-
-    .button.secondary:hover,
-    .link-chip:hover {
+    .button.secondary:hover {
       border-color: var(--line-strong);
       background: rgba(84, 216, 255, 0.09);
     }
 
-    .button.tertiary:hover {
+    .hero-counter {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      max-width: 100%;
+      margin: 20px 0 0;
+      padding: 10px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 640;
+      line-height: 1.3;
+    }
+
+    .hero-counter [data-pilot-counter] {
       color: var(--text);
     }
 
-    .proof {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      align-items: center;
-      gap: 18px;
-      max-width: 560px;
-      margin-top: 28px;
-      padding: 17px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background:
-        radial-gradient(260px 140px at 0% 0%, rgba(84, 216, 255, 0.12), transparent 72%),
-        rgba(255, 255, 255, 0.06);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-    }
-
-    .proof-signal {
-      display: grid;
-      place-items: center;
-      width: 58px;
-      height: 58px;
-      border: 1px solid rgba(113, 239, 198, 0.28);
-      border-radius: 8px;
-      background: rgba(113, 239, 198, 0.09);
-    }
-
-    .proof-signal::before {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--mint);
-      box-shadow: 0 0 28px rgba(113, 239, 198, 0.8);
-      content: "";
-    }
-
-    .proof-label,
-    .signal-label,
     .section-label {
       margin: 0;
       color: var(--quiet);
       font-size: 0.82rem;
       font-weight: 680;
       line-height: 1.25;
-    }
-
-    .proof-count {
-      margin: 4px 0 5px;
-      color: var(--text);
-      font-size: 1.22rem;
-      font-weight: 720;
-      line-height: 1.3;
-      overflow-wrap: break-word;
-    }
-
-    .proof-note {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.45;
     }
 
     .globe-stage {
@@ -370,11 +319,11 @@
 
     .globe-stage::before {
       position: absolute;
-      inset: -5%;
+      inset: 1%;
       z-index: 0;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(84, 216, 255, 0.12), rgba(42, 109, 255, 0.055) 35%, transparent 68%);
-      filter: blur(28px);
+      background: radial-gradient(circle, rgba(84, 216, 255, 0.08), rgba(42, 109, 255, 0.03) 34%, transparent 67%);
+      filter: blur(24px);
       content: "";
       pointer-events: none;
     }
@@ -399,27 +348,17 @@
     .globe-ring,
     .globe-ring::before {
       position: absolute;
-      inset: 7%;
+      inset: 5%;
       z-index: 0;
-      border: 1px solid rgba(84, 216, 255, 0.08);
+      border: 1px solid rgba(84, 216, 255, 0.06);
       border-radius: 50%;
       content: "";
       pointer-events: none;
     }
 
     .globe-ring::before {
-      inset: -11%;
-      border-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .globe-ring.r2 {
-      inset: 1%;
-      opacity: 0.72;
-    }
-
-    .globe-ring.r3 {
-      inset: -5%;
-      opacity: 0.46;
+      inset: -7%;
+      border-color: rgba(255, 255, 255, 0.035);
     }
 
     #globe-fallback {
@@ -483,67 +422,6 @@
       backdrop-filter: blur(18px);
     }
 
-    .live-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 18px rgba(84, 216, 255, 0.78);
-      animation: signal 2.8s ease-out infinite;
-      flex: 0 0 auto;
-    }
-
-    .signal-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      padding: 0 0 100px;
-    }
-
-    .link-chip {
-      display: flex;
-      min-height: 92px;
-      min-width: 0;
-      flex-direction: column;
-      justify-content: center;
-      gap: 7px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.045);
-      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
-    }
-
-    .link-chip:hover {
-      transform: translateY(-1px);
-    }
-
-    .link-chip strong {
-      color: var(--text);
-      font-size: 1.02rem;
-      font-weight: 690;
-      line-height: 1.3;
-    }
-
-    .link-chip span {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.4;
-    }
-
-    .story-band {
-      padding: 0 0 112px;
-    }
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      align-items: start;
-      gap: 40px;
-      padding-top: 38px;
-      border-top: 1px solid var(--line);
-    }
-
     h2 {
       margin: 12px 0 0;
       font-size: 3rem;
@@ -551,51 +429,6 @@
       line-height: 1.05;
       overflow-wrap: break-word;
       text-wrap: balance;
-    }
-
-    .story-copy {
-      display: grid;
-      gap: 18px;
-      min-width: 0;
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.62;
-    }
-
-    .story-copy p {
-      margin: 0;
-    }
-
-    .proof-line {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .proof-line div {
-      min-height: 106px;
-      padding: 18px;
-      border-top: 1px solid rgba(84, 216, 255, 0.26);
-      background: linear-gradient(180deg, rgba(84, 216, 255, 0.07), transparent);
-    }
-
-    .proof-line strong,
-    .proof-line span {
-      display: block;
-    }
-
-    .proof-line strong {
-      font-size: 1.36rem;
-      font-weight: 720;
-      line-height: 1.25;
-    }
-
-    .proof-line span {
-      margin-top: 7px;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.42;
     }
 
     .deck-section {
@@ -715,23 +548,6 @@
       line-height: 1.5;
     }
 
-    @keyframes signal {
-      0% {
-        transform: scale(0.9);
-        opacity: 0.75;
-      }
-
-      60% {
-        transform: scale(1.18);
-        opacity: 1;
-      }
-
-      100% {
-        transform: scale(0.9);
-        opacity: 0.75;
-      }
-    }
-
     @media (max-width: 1040px) {
       h1 {
         font-size: 4.35rem;
@@ -753,11 +569,6 @@
         justify-self: start;
       }
 
-      .signal-row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .story-grid,
       .final-inner {
         grid-template-columns: 1fr;
       }
@@ -770,29 +581,45 @@
 
     @media (max-width: 760px) {
       .shell {
-        width: min(100% - 32px, 680px);
+        width: min(680px, calc(100% - 32px));
       }
 
       .topbar {
         align-items: center;
+        gap: 10px;
         min-height: 0;
-        padding-top: 24px;
+        padding-top: 18px;
       }
 
       .top-actions {
         flex: 0 0 auto;
       }
 
-      .route-nav {
+      .brand-logo-frame {
+        width: min(136px, 36vw);
+      }
+
+      .language-switch {
+        min-height: 40px;
+        padding: 3px;
+      }
+
+      .language-switch button {
+        min-width: 34px;
+        min-height: 32px;
+      }
+
+      .live-product-link {
         display: none;
       }
 
       .hero {
-        padding: 50px 0 62px;
+        gap: 24px;
+        padding: 34px 0 62px;
       }
 
       h1 {
-        font-size: 3.26rem;
+        font-size: 2.82rem;
         line-height: 1.01;
       }
 
@@ -811,23 +638,9 @@
       }
 
       .hero-actions .button,
+      .deck-actions .button,
       .final-actions .button {
         flex: 1 1 100%;
-      }
-
-      .button.tertiary {
-        min-height: 42px;
-        justify-content: flex-start;
-      }
-
-      .proof {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .proof-signal {
-        width: 48px;
-        height: 48px;
       }
 
       .globe-stage {
@@ -843,24 +656,9 @@
         font-size: 0.7rem;
       }
 
-      .signal-row,
-      .proof-line {
-        grid-template-columns: 1fr;
-      }
-
-      .signal-row {
-        padding-bottom: 72px;
-      }
-
-      .story-band,
       .deck-section,
       .final-band {
         padding-bottom: 76px;
-      }
-
-      .story-grid {
-        gap: 24px;
-        padding-top: 30px;
       }
 
       .deck-frame {
@@ -883,13 +681,12 @@
     }
 
     @media (max-width: 430px) {
-      .route-nav {
-        gap: 12px;
-        font-size: 0.86rem;
+      .brand-logo-frame {
+        width: min(118px, 32vw);
       }
 
       h1 {
-        font-size: 2.82rem;
+        font-size: 2.34rem;
       }
 
       .button {
@@ -903,12 +700,31 @@
         width: min(100%, 330px);
       }
 
-      .link-chip {
-        min-height: 84px;
-      }
-
       .deck-frame {
         min-height: 620px;
+      }
+    }
+
+    @media (max-width: 760px) and (max-height: 760px) {
+      .hero {
+        gap: 18px;
+        padding-top: 24px;
+      }
+
+      .kicker {
+        margin-bottom: 14px;
+      }
+
+      .lede {
+        margin-top: 18px;
+      }
+
+      .hero-actions {
+        margin-top: 24px;
+      }
+
+      .globe-stage {
+        width: min(100%, 294px);
       }
     }
 
@@ -935,12 +751,7 @@
       </span>
     </a>
     <div class="top-actions">
-      <nav class="route-nav" aria-label="Moontel product links">
-        <a href="https://moontel.net/" data-i18n="navProduct">Prodotto live</a>
-        <a href="https://moontel.net/coverage">Coverage</a>
-        <a href="https://moontel.net/how-it-works" data-i18n="navHow">Come funziona</a>
-        <a href="https://moontel.net/levels">Levels</a>
-      </nav>
+      <a class="live-product-link" href="https://moontel.net/">Moontel.net</a>
       <div class="language-switch" role="group" aria-label="Seleziona lingua" data-language-label>
         <button type="button" data-lang-choice="it" aria-pressed="true" aria-label="Italiano">IT</button>
         <button type="button" data-lang-choice="en" aria-pressed="false" aria-label="English">EN</button>
@@ -951,83 +762,27 @@
   <main>
     <section class="shell hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="kicker" data-i18n="kicker">Moontel Pitch Deck</p>
-        <h1 id="hero-title" data-i18n="heroTitle">Internet gratuito in tutto il mondo. Per sempre.</h1>
-        <p class="lede" data-i18n="heroCopy">Moontel offre dati mobili su eSIM, sbloccabili attraverso azioni digitali rapide. Stiamo aprendo i primi pilot drop e costruendo un nuovo modello di connettivita globale.</p>
+        <p class="kicker" data-i18n="kicker">Moontel</p>
+        <h1 id="hero-title" data-i18n="heroTitle">Internet gratuito nel mondo.
+Per sempre.</h1>
+        <p class="lede" data-i18n="heroCopy">Dati mobili su eSIM, sbloccabili con azioni rapide.</p>
         <div class="hero-actions">
           <a class="button primary" href="#deck" data-view-deck data-i18n="viewDeck">Guarda il Pitch Deck</a>
           <a class="button secondary" href="https://moontel.net/" data-i18n="visitProduct">Visita Moontel.net</a>
-          <a class="button tertiary" href="mailto:Contacts@moontel.net" data-i18n="contactFounder">Contatta il Founder</a>
         </div>
-        <article class="proof" aria-live="polite">
-          <span class="proof-signal" aria-hidden="true"></span>
-          <div>
-            <p class="proof-label"><span data-i18n="proofTitle">Live pilot reservations</span> <span aria-hidden="true">/</span> <span data-pilot-drop>Drop 01</span></p>
-            <p class="proof-count" data-pilot-counter>100/500 early access spots reserved</p>
-            <p class="proof-note" data-i18n="proofNote">Waitlist organica, zero paid acquisition.</p>
-          </div>
-        </article>
+        <p class="hero-counter" aria-live="polite">
+          <span data-i18n="proofTitle">Pilot live</span>
+          <span aria-hidden="true">·</span>
+          <span data-pilot-counter>100/500 early access spots reserved</span>
+        </p>
       </div>
 
       <div class="globe-stage">
-        <span class="globe-ring r3" aria-hidden="true"></span>
-        <span class="globe-ring r2" aria-hidden="true"></span>
         <span class="globe-ring" aria-hidden="true"></span>
         <canvas id="globe-canvas" aria-label="Interactive Moontel coverage globe"></canvas>
         <div id="globe-fallback" aria-hidden="true"></div>
         <div class="globe-status" id="globe-status">
-          <span class="live-dot" aria-hidden="true"></span>
-          <span id="globe-status-text">218 supported countries and destinations</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="shell signal-row" aria-label="Moontel product routes">
-      <a class="link-chip" href="https://moontel.net/#drop">
-        <p class="signal-label" data-i18n="routePilotLabel">Pilot</p>
-        <strong data-i18n="routePilotTitle">Unisciti al Pilot</strong>
-        <span data-i18n="routePilotCopy">Drop 00 e Drop 01 stanno aprendo l'accesso.</span>
-      </a>
-      <a class="link-chip" href="https://moontel.net/coverage">
-        <p class="signal-label">Coverage</p>
-        <strong data-i18n="routeCoverageTitle">Copertura globale</strong>
-        <span data-i18n="routeCoverageCopy">218 paesi e destinazioni supportati.</span>
-      </a>
-      <a class="link-chip" href="https://moontel.net/how-it-works">
-        <p class="signal-label">eSIM</p>
-        <strong data-i18n="routeHowTitle">Azioni rapide. Dati reali.</strong>
-        <span data-i18n="routeHowCopy">Il loop prodotto spiegato sul sito live.</span>
-      </a>
-      <a class="link-chip" href="https://moontel.net/levels">
-        <p class="signal-label">Levels</p>
-        <strong data-i18n="routeLevelsTitle">Parti gratis. Cresci quando serve.</strong>
-        <span data-i18n="routeLevelsCopy">Free access e livelli paid sulla stessa eSIM.</span>
-      </a>
-    </section>
-
-    <section class="shell story-band" aria-labelledby="story-title">
-      <div class="story-grid">
-        <div>
-          <p class="section-label" data-i18n="storyLabel">Per valutare Moontel</p>
-          <h2 id="story-title" data-i18n="storyTitle">Una porta chiara tra visione e prodotto live.</h2>
-        </div>
-        <div class="story-copy">
-          <p data-i18n="storyCopyOne">Moontel parte dalla connettivita gratuita. Le persone sbloccano dati mobili su eSIM attraverso azioni digitali rapide, poi possono salire di Level quando serve piu accesso.</p>
-          <p data-i18n="storyCopyTwo">Questo pitch gateway collega il deck alla prova che conta: il pilot, la waitlist organica e il prodotto gia visibile su Moontel.net.</p>
-          <div class="proof-line">
-            <div>
-              <strong>eSIM</strong>
-              <span data-i18n="proofEsim">Accesso mobile digitale.</span>
-            </div>
-            <div>
-              <strong>218</strong>
-              <span data-i18n="proofGlobal">Paesi e destinazioni supportati.</span>
-            </div>
-            <div>
-              <strong>Drop</strong>
-              <span data-i18n="proofDrop">Pilot access in coorti controllate.</span>
-            </div>
-          </div>
+          <span id="globe-status-text" data-i18n="globeStatus">218 paesi e destinazioni supportati</span>
         </div>
       </div>
     </section>
@@ -1036,19 +791,19 @@
       <div class="deck-head">
         <div class="deck-head-copy">
           <p class="section-label" data-i18n="deckLabel">Pitch Deck</p>
-          <h2 id="deck-title" data-i18n="deckTitle">La tesi Moontel, slide dopo slide.</h2>
-          <p data-i18n="deckCopy">Visione, prodotto, traction, pilot plan e modello in un deck pensato per una lettura rapida.</p>
+          <h2 id="deck-title" data-i18n="deckTitle">Il Pitch Deck Moontel</h2>
+          <p data-i18n="deckCopy">Visione, prodotto, pilot e modello in una lettura rapida.</p>
         </div>
         <div class="deck-actions">
-          <a class="button secondary" id="open-full-deck" href="moontel_pitch_deck_it.html" data-i18n="openDeck">Apri il deck completo</a>
-          <a class="button tertiary" href="mailto:Contacts@moontel.net" data-i18n="deckContact">Parla con il Founder</a>
+          <a class="button primary" href="#deck" data-load-deck data-i18n="loadDeck">Carica il Pitch Deck</a>
+          <a class="button secondary" id="open-full-deck" href="moontel_pitch_deck_it.html" data-i18n="openDeck">Apri deck completo</a>
         </div>
       </div>
       <div class="deck-frame" data-deck-frame>
         <div class="deck-state" id="deck-state">
-          <p class="section-label" data-i18n="deckFrameLabel">Deck isolato</p>
-          <h3 data-i18n="deckFrameTitle">Il deck si carica quando serve.</h3>
-          <p data-i18n="deckFrameCopy">L'embed resta separato dalla pagina per proteggere stile, analytics e navigazione.</p>
+          <p class="section-label" data-i18n="deckLabel">Pitch Deck</p>
+          <h3 data-i18n="deckTitle">Il Pitch Deck Moontel</h3>
+          <p data-i18n="deckCopy">Visione, prodotto, pilot e modello in una lettura rapida.</p>
           <a class="button primary" href="#deck" data-load-deck data-i18n="loadDeck">Carica il Pitch Deck</a>
         </div>
         <iframe id="pitch-deck-frame" title="Moontel pitch deck" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -1059,8 +814,8 @@
       <div class="final-inner">
         <div>
           <p class="section-label" data-i18n="finalLabel">Prodotto live</p>
-          <h2 id="final-title" data-i18n="finalTitle">Scopri il prodotto live su Moontel.net</h2>
-          <p data-i18n="finalCopy">Guarda coverage, Levels e pilot waitlist.</p>
+          <h2 id="final-title" data-i18n="finalTitle">Guarda il prodotto live.</h2>
+          <p data-i18n="finalCopy">Coverage, Levels e pilot sono già visibili su Moontel.net.</p>
         </div>
         <div class="final-actions">
           <a class="button primary" href="https://moontel.net/" data-i18n="visitProduct">Visita Moontel.net</a>
@@ -1084,87 +839,41 @@
       };
       const copy = {
         it: {
-          navProduct: "Prodotto live",
-          navHow: "Come funziona",
-          kicker: "Moontel Pitch Deck",
-          heroTitle: "Internet gratuito in tutto il mondo. Per sempre.",
-          heroCopy: "Moontel offre dati mobili su eSIM, sbloccabili attraverso azioni digitali rapide. Stiamo aprendo i primi pilot drop e costruendo un nuovo modello di connettivita globale.",
+          kicker: "Moontel",
+          heroTitle: "Internet gratuito nel mondo.\nPer sempre.",
+          heroCopy: "Dati mobili su eSIM, sbloccabili con azioni rapide.",
           viewDeck: "Guarda il Pitch Deck",
           visitProduct: "Visita Moontel.net",
-          contactFounder: "Contatta il Founder",
-          proofTitle: "Live pilot reservations",
-          proofNote: "Waitlist organica, zero paid acquisition.",
-          routePilotLabel: "Pilot",
-          routePilotTitle: "Unisciti al Pilot",
-          routePilotCopy: "Drop 00 e Drop 01 stanno aprendo l'accesso.",
-          routeCoverageTitle: "Copertura globale",
-          routeCoverageCopy: "218 paesi e destinazioni supportati.",
-          routeHowTitle: "Azioni rapide. Dati reali.",
-          routeHowCopy: "Il loop prodotto spiegato sul sito live.",
-          routeLevelsTitle: "Parti gratis. Cresci quando serve.",
-          routeLevelsCopy: "Free access e livelli paid sulla stessa eSIM.",
-          storyLabel: "Per valutare Moontel",
-          storyTitle: "Una porta chiara tra visione e prodotto live.",
-          storyCopyOne: "Moontel parte dalla connettivita gratuita. Le persone sbloccano dati mobili su eSIM attraverso azioni digitali rapide, poi possono salire di Level quando serve piu accesso.",
-          storyCopyTwo: "Questo pitch gateway collega il deck alla prova che conta: il pilot, la waitlist organica e il prodotto gia visibile su Moontel.net.",
-          proofEsim: "Accesso mobile digitale.",
-          proofGlobal: "Paesi e destinazioni supportati.",
-          proofDrop: "Pilot access in coorti controllate.",
+          proofTitle: "Pilot live",
+          globeStatus: "218 paesi e destinazioni supportati",
           deckLabel: "Pitch Deck",
-          deckTitle: "La tesi Moontel, slide dopo slide.",
-          deckCopy: "Visione, prodotto, traction, pilot plan e modello in un deck pensato per una lettura rapida.",
-          openDeck: "Apri il deck completo",
-          deckContact: "Parla con il Founder",
-          deckFrameLabel: "Deck isolato",
-          deckFrameTitle: "Il deck si carica quando serve.",
-          deckFrameCopy: "L'embed resta separato dalla pagina per proteggere stile, analytics e navigazione.",
+          deckTitle: "Il Pitch Deck Moontel",
+          deckCopy: "Visione, prodotto, pilot e modello in una lettura rapida.",
+          openDeck: "Apri deck completo",
           loadDeck: "Carica il Pitch Deck",
           finalLabel: "Prodotto live",
-          finalTitle: "Scopri il prodotto live su Moontel.net",
-          finalCopy: "Guarda coverage, Levels e pilot waitlist.",
+          finalTitle: "Guarda il prodotto live.",
+          finalCopy: "Coverage, Levels e pilot sono già visibili su Moontel.net.",
           joinPilot: "Unisciti al Pilot",
           languageLabel: "Seleziona lingua",
           frameTitle: "Moontel pitch deck in italiano"
         },
         en: {
-          navProduct: "Live product",
-          navHow: "How it works",
-          kicker: "Moontel Pitch Deck",
-          heroTitle: "Free Internet Worldwide. Forever.",
-          heroCopy: "Moontel gives people mobile data on eSIM, unlocked through quick digital actions. We are opening the first pilot drops and building a new model for global connectivity.",
+          kicker: "Moontel",
+          heroTitle: "Free Internet Worldwide.\nForever.",
+          heroCopy: "Mobile data on eSIM, unlocked through quick actions.",
           viewDeck: "View Pitch Deck",
           visitProduct: "Visit Moontel.net",
-          contactFounder: "Contact Founder",
-          proofTitle: "Live pilot reservations",
-          proofNote: "Organic waitlist, no paid acquisition.",
-          routePilotLabel: "Pilot",
-          routePilotTitle: "Join Pilot",
-          routePilotCopy: "Drop 00 and Drop 01 are opening access.",
-          routeCoverageTitle: "Global coverage",
-          routeCoverageCopy: "218 supported countries and destinations.",
-          routeHowTitle: "Quick actions. Real data.",
-          routeHowCopy: "The live site explains the product loop.",
-          routeLevelsTitle: "Start free. Step up when needed.",
-          routeLevelsCopy: "Free access and paid Levels on one eSIM.",
-          storyLabel: "For startup evaluation",
-          storyTitle: "A clear bridge between the vision and the live product.",
-          storyCopyOne: "Moontel starts with free connectivity. People unlock mobile data on eSIM through quick digital actions, then move up through Levels when they need more access.",
-          storyCopyTwo: "This pitch gateway connects the deck to the proof that matters: the pilot, the organic waitlist and the live product already visible on Moontel.net.",
-          proofEsim: "Digital mobile access.",
-          proofGlobal: "Supported countries and destinations.",
-          proofDrop: "Pilot access in controlled cohorts.",
+          proofTitle: "Live pilot",
+          globeStatus: "218 supported countries and destinations",
           deckLabel: "Pitch Deck",
-          deckTitle: "The Moontel thesis, slide by slide.",
-          deckCopy: "Vision, product, traction, pilot plan and model in a fast investor read.",
+          deckTitle: "The Moontel Pitch Deck",
+          deckCopy: "A focused read on vision, product, pilot and model.",
           openDeck: "Open full deck",
-          deckContact: "Contact Founder",
-          deckFrameLabel: "Isolated deck",
-          deckFrameTitle: "The deck loads when it is needed.",
-          deckFrameCopy: "The embed stays separate from the gateway so style, analytics and navigation stay clean.",
           loadDeck: "Load Pitch Deck",
           finalLabel: "Live product",
-          finalTitle: "See the live product on Moontel.net",
-          finalCopy: "Explore coverage, Levels and pilot waitlist.",
+          finalTitle: "See the live product.",
+          finalCopy: "Coverage, Levels and pilot access are already visible on Moontel.net.",
           joinPilot: "Join Pilot",
           languageLabel: "Select language",
           frameTitle: "Moontel pitch deck in English"
@@ -1301,7 +1010,7 @@
               deckObserver.disconnect();
             }
           });
-        }, { rootMargin: "720px 0px" });
+        }, { threshold: 0 });
         deckObserver.observe(deckSection);
       }
 
